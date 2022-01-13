@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="Company">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Employee" maxOccurs="unbounded">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Emp-ID" type="xs:integer"></xs:element>
+<xs:element name="Emp-name" type="xs:string"></xs:element>
+<xs:element name="Emp-age" type="xs:integer"></xs:element>
+<xs:element name="Emp-salary" type="custype"></xs:element>
+<xs:element name="Emp-emailid" type="emailAddress"></xs:element>
+<xs:element name="Emp-Phonenum" type="phno"></xs:element>
+<xs:element name="Emp-designation" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:unique name="unique">
+      <xs:selector xpath="Employee"/>
+      <xs:field xpath="Emp-ID"/>
+ </xs:unique>
+</xs:element>
+<xs:simpleType name="custype">
+<xs:restriction base="xs:integer">
+<xs:minInclusive value="50000"></xs:minInclusive>
+<xs:maxInclusive value="200000"></xs:maxInclusive>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="emailAddress"> 
+    <xs:restriction base="xs:string"> 
+      <xs:pattern value="[^@]+@[^\.]+\..+"/> 
+    </xs:restriction> 
+
+</xs:simpleType>
+<xs:simpleType name="phno"> 
+    <xs:restriction base="xs:string"> 
+      <xs:pattern value="[2-9](([0-9]{6})|([0-9]{9}))" />
+    </xs:restriction> 
+</xs:simpleType>
+</xs:schema>
